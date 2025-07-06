@@ -46,7 +46,10 @@ pip install -r requirements.txt
 5. **Python Jose (3.5.0)** – Implementación de **JWT (JSON Web Tokens)** para autenticación y autorización, permitiendo el manejo seguro de tokens en APIs.
 6. **Bcrypt (4.3.0)** – Algoritmo de hashing para contraseñas, proporcionando seguridad robusta mediante cifrado irreversible con salt.
 
-## Configuración 🔧
+# Configuración 🔧
 ### 1. Crear archivo `.env`
 Crea en la raíz del proyecto (fuera de la carpeta src) un archivo `.env`, en el crearás todas las variables de entorno para el funcionamiento del proyecto:
 - `MONGODB_URL`: Ingresa el URL de conexión que te proporciona MongoDB Atlas al momento de crear un proyecto.
+- `SECRET_KEY`: Ejecuta el comando en bash `openssl rand -hex 32` para obtener una llave secreta aleatoria para firmar los JWT.
+- `ALGORITHM`: Algoritmo de cifrado (se recomienda HS256).
+- `ACCESS_TOKEN_EXPIRE_MINUTES`: Minutos de expiración para los tokens de acceso.
