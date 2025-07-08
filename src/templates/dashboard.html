@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard CRUD</title>
+  <title>Sudo -u/CRUD</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 to-blue-300 font-sans">
@@ -38,10 +38,41 @@
               <td class="p-3">Empleado</td>
               <td class="p-3 text-center">
                 <button class="text-sm bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2">Editar</button>
-                <button class="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
+                <button class="btn-eliminar text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
               </td>
             </tr>
             <!-- Más registros aquí -->
+            <tr class="border-b hover:bg-blue-50 transition">
+              <td class="p-3">2</td>
+              <td class="p-3">Fermin Loya</td>
+              <td class="p-3">Fermin@mail.com</td>
+              <td class="p-3">Limpieza</td>
+              <td class="p-3 text-center">
+                <button class="text-sm bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2">Editar</button>
+                <button class="btn-eliminar text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
+              </td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50 transition">
+              <td class="p-3">3</td>
+              <td class="p-3">Sergio Pérez</td>
+              <td class="p-3">checo@mail.com</td>
+              <td class="p-3">Empleado</td>
+              <td class="p-3 text-center">
+                <button class="text-sm bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2">Editar</button>
+                <button class="btn-eliminar text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
+
+              </td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50 transition">
+              <td class="p-3">4</td>
+              <td class="p-3">Armando Solas</td>
+              <td class="p-3">Armasola@mail.com</td>
+              <td class="p-3">Empleado</td>
+              <td class="p-3 text-center">
+                <button class="text-sm bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500 mr-2">Editar</button>
+                <button class="btn-eliminar text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -56,8 +87,11 @@
         <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
         <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4" required />
 
-        <label class="block text-sm font-medium text-gray-700 mb-1">Correo</label>
-        <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4" required />
+        <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+        <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4" required />
+
+        <label class="block text-sm font-medium text-gray-700 mb-1"> Confirmar Contraseña</label>
+        <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4" required />
 
         <label class="block text-sm font-medium text-gray-700 mb-1">Rol</label>
         <select class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4" required>
@@ -74,6 +108,8 @@
     </div>
   </div>
 
+
+
   <script>
     function openModal() {
       document.getElementById('modal').classList.remove('hidden');
@@ -83,6 +119,26 @@
       document.getElementById('modal').classList.add('hidden');
     }
 
+
+    // funcion para eliminar usuarios
+    document.querySelectorAll('.btn-eliminar').forEach(button => {
+    button.addEventListener('click', () => {
+      if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+        const row = button.closest('tr');
+        row.remove();
+      }
+    });
+  });
+
+
+  // funcion para editar usuarios
+      document.querySelectorAll('.btn-editar').forEach(button => {
+      button.addEventListener('click', () => {
+        const nombre = button.getAttribute('data-nombre');
+        const rol = button.getAttribute('data-rol');
+        openModal(true, nombre, rol);
+      });
+    });
   </script>
 </body>
 </html>
